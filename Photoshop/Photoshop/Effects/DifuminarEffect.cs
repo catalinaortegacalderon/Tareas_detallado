@@ -21,9 +21,20 @@ public class Difuminar:IPhotoEffect
         {
             for (int y = 0; y < height; y++)
             {
-                int r = originalImage[x, y].R;
-                int g = originalImage[x, y].G;
-                int b = originalImage[x, y].B;
+                //borde arriba
+                //borde abajo
+                //borde derecha
+                //borde izq
+                //normal
+                int r =(originalImage[x-1, y+1].R + originalImage[x, y+1].R + originalImage[x+1,y+1].R +
+                        originalImage[x-1, y].R + originalImage[x, y].R + originalImage[x+1, y].R +
+                        originalImage[x-1, y-1].R + originalImage[x, y-1].R + originalImage[x+1, y+1].R)/9;
+                int g = (originalImage[x-1, y+1].R + originalImage[x, y+1].R + originalImage[x+1,y+1].R +
+                         originalImage[x-1, y].R + originalImage[x, y].R + originalImage[x+1, y].R +
+                         originalImage[x-1, y-1].R + originalImage[x, y-1].R + originalImage[x+1, y+1].R)/9;
+                int b = (originalImage[x-1, y+1].R + originalImage[x, y+1].R + originalImage[x+1,y+1].R +
+                         originalImage[x-1, y].R + originalImage[x, y].R + originalImage[x+1, y].R +
+                         originalImage[x-1, y-1].R + originalImage[x, y-1].R + originalImage[x+1, y+1].R)/9;
                 Byte r2 = (Byte)(255);
                 Byte g2 = (Byte)(255);
                 Byte b2 = (Byte)(255);

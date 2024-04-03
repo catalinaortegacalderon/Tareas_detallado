@@ -21,6 +21,11 @@ public class BordesEffect:IPhotoEffect
         {
             for (int y = 0; y < height; y++)
             {
+                //normal
+                //borde arriba
+                //borde abajo
+                //borde derecha
+                //borde izq
                 int r = originalImage[x, y].R;
                 int g = originalImage[x, y].G;
                 int b = originalImage[x, y].B;
