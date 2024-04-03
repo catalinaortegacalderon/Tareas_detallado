@@ -8,6 +8,6 @@
 using Photoshop;
 using Photoshop.Effects;
 
-IPhotoEffect[] availableEffects = new IPhotoEffect[] { new BlackAndWhiteEffect()};
+IPhotoEffect[] availableEffects = new IPhotoEffect[] { new BlackAndWhiteEffect(), new OscurecerEffect(), new AclararEffect()};
 string folder = "imgs";
 Controller.Run(folder, availableEffects);
