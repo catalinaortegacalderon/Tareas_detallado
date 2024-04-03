@@ -1,0 +1,17 @@
+/home/rodrigo/Desktop/IIC2113/2024-1/Clases/Clase 06/Actividad/Photoshop/Photoshop/bin/Debug/net8.0/Photoshop
+/home/rodrigo/Desktop/IIC2113/2024-1/Clases/Clase 06/Actividad/Photoshop/Photoshop/bin/Debug/net8.0/Photoshop.deps.json
+/home/rodrigo/Desktop/IIC2113/2024-1/Clases/Clase 06/Actividad/Photoshop/Photoshop/bin/Debug/net8.0/Photoshop.runtimeconfig.json
+/home/rodrigo/Desktop/IIC2113/2024-1/Clases/Clase 06/Actividad/Photoshop/Photoshop/bin/Debug/net8.0/Photoshop.dll
+/home/rodrigo/Desktop/IIC2113/2024-1/Clases/Clase 06/Actividad/Photoshop/Photoshop/bin/Debug/net8.0/Photoshop.pdb
+/home/rodrigo/Desktop/IIC2113/2024-1/Clases/Clase 06/Actividad/Photoshop/Photoshop/bin/Debug/net8.0/SixLabors.ImageSharp.dll
+/home/rodrigo/Desktop/IIC2113/2024-1/Clases/Clase 06/Actividad/Photoshop/Photoshop/obj/Debug/net8.0/Photoshop.csproj.AssemblyReference.cache
+/home/rodrigo/Desktop/IIC2113/2024-1/Clases/Clase 06/Actividad/Photoshop/Photoshop/obj/Debug/net8.0/Photoshop.GeneratedMSBuildEditorConfig.editorconfig
+/home/rodrigo/Desktop/IIC2113/2024-1/Clases/Clase 06/Actividad/Photoshop/Photoshop/obj/Debug/net8.0/Photoshop.AssemblyInfoInputs.cache
+/home/rodrigo/Desktop/IIC2113/2024-1/Clases/Clase 06/Actividad/Photoshop/Photoshop/obj/Debug/net8.0/Photoshop.AssemblyInfo.cs
+/home/rodrigo/Desktop/IIC2113/2024-1/Clases/Clase 06/Actividad/Photoshop/Photoshop/obj/Debug/net8.0/Photoshop.csproj.CoreCompileInputs.cache
+/home/rodrigo/Desktop/IIC2113/2024-1/Clases/Clase 06/Actividad/Photoshop/Photoshop/obj/Debug/net8.0/Photoshop.csproj.Up2Date
+/home/rodrigo/Desktop/IIC2113/2024-1/Clases/Clase 06/Actividad/Photoshop/Photoshop/obj/Debug/net8.0/Photoshop.dll
+/home/rodrigo/Desktop/IIC2113/2024-1/Clases/Clase 06/Actividad/Photoshop/Photoshop/obj/Debug/net8.0/refint/Photoshop.dll
+/home/rodrigo/Desktop/IIC2113/2024-1/Clases/Clase 06/Actividad/Photoshop/Photoshop/obj/Debug/net8.0/Photoshop.pdb
+/home/rodrigo/Desktop/IIC2113/2024-1/Clases/Clase 06/Actividad/Photoshop/Photoshop/obj/Debug/net8.0/Photoshop.genruntimeconfig.cache
+/home/rodrigo/Desktop/IIC2113/2024-1/Clases/Clase 06/Actividad/Photoshop/Photoshop/obj/Debug/net8.0/ref/Photoshop.dll

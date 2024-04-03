@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "xZQnL9dcGTel4VvPEL1C+Xj/nWXmeltlSobPVjXFtcvYcFQro0UV+ZyJu14uI8XWBThTMhCvuwT3dd1d4m62VA==",
+  "success": true,
+  "projectFilePath": "/home/rodrigo/Desktop/IIC2113/2024-1/Clases/Clase 06/Actividad/Photoshop/Photoshop/Photoshop.csproj",
+  "expectedPackageFiles": [
+    "/home/rodrigo/.nuget/packages/sixlabors.imagesharp/3.1.3/sixlabors.imagesharp.3.1.3.nupkg.sha512"
+  ],
+  "logs": []
+}
