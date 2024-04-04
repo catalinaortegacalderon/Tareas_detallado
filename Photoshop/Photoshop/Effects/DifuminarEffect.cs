@@ -21,39 +21,177 @@ public class Difuminar:IPhotoEffect
         {
             for (int y = 0; y < height; y++)
             {
-                //borde arriba
-                //borde abajo
-                //borde derecha
-                //borde izq
-                //normal
-                int r =(originalImage[x-1, y+1].R + originalImage[x, y+1].R + originalImage[x+1,y+1].R +
-                        originalImage[x-1, y].R + originalImage[x, y].R + originalImage[x+1, y].R +
-                        originalImage[x-1, y-1].R + originalImage[x, y-1].R + originalImage[x+1, y+1].R)/9;
-                int g = (originalImage[x-1, y+1].R + originalImage[x, y+1].R + originalImage[x+1,y+1].R +
-                         originalImage[x-1, y].R + originalImage[x, y].R + originalImage[x+1, y].R +
-                         originalImage[x-1, y-1].R + originalImage[x, y-1].R + originalImage[x+1, y+1].R)/9;
-                int b = (originalImage[x-1, y+1].R + originalImage[x, y+1].R + originalImage[x+1,y+1].R +
-                         originalImage[x-1, y].R + originalImage[x, y].R + originalImage[x+1, y].R +
-                         originalImage[x-1, y-1].R + originalImage[x, y-1].R + originalImage[x+1, y+1].R)/9;
-                Byte r2 = (Byte)(255);
-                Byte g2 = (Byte)(255);
-                Byte b2 = (Byte)(255);
-                if (r < 235)
+                Byte r;
+                Byte g;
+                Byte b;
+                //4 esquinas
+                if (x == 0 && y == 0)
                 {
-                    r2 = (Byte)(r + 20);
-                }
-                if (g < 235)
-                {
-                    g2 = (Byte)(g + 20);
-                }
-                if (b < 235)
-                {
-                    b2 = (Byte)(b + 20);
-                }
-                NewImage[x, y] = new Rgb24(r2,g2,b2);
-            }   
-        }
+                    r = (Byte)((originalImage[x, y + 1].R +
+                                originalImage[x + 1, y + 1].R + originalImage[x, y].R + originalImage[x + 1, y].R +
+                                originalImage[x + 1, y + 1].R) / 9);
+                    g = (Byte)((originalImage[x, y + 1].G + originalImage[x + 1, y + 1].G +
+                                originalImage[x, y].G + originalImage[x + 1, y].G +
+                                originalImage[x + 1, y + 1].G) / 9);
+                    b = (Byte)((originalImage[x - 1, y + 1].B + originalImage[x, y + 1].B +
+                                originalImage[x + 1, y + 1].B +
+                                originalImage[x - 1, y].B + originalImage[x, y].B + originalImage[x + 1, y].B +
+                                originalImage[x - 1, y - 1].B + originalImage[x, y - 1].B +
+                                originalImage[x + 1, y + 1].B) / 9);
 
+                }
+                else if (x == width - 1 && y == height - 1)
+                {
+                    r = (Byte)((originalImage[x - 1, y + 1].R + originalImage[x, y + 1].R +
+                                originalImage[x + 1, y + 1].R +
+                                originalImage[x - 1, y].R + originalImage[x, y].R + originalImage[x + 1, y].R +
+                                originalImage[x - 1, y - 1].R + originalImage[x, y - 1].R +
+                                originalImage[x + 1, y + 1].R) / 9);
+                    g = (Byte)((originalImage[x - 1, y + 1].G + originalImage[x, y + 1].G +
+                                originalImage[x + 1, y + 1].G +
+                                originalImage[x - 1, y].G + originalImage[x, y].G + originalImage[x + 1, y].G +
+                                originalImage[x - 1, y - 1].G + originalImage[x, y - 1].G +
+                                originalImage[x + 1, y + 1].G) / 9);
+                    b = (Byte)((originalImage[x - 1, y + 1].B + originalImage[x, y + 1].B +
+                                originalImage[x + 1, y + 1].B +
+                                originalImage[x - 1, y].B + originalImage[x, y].B + originalImage[x + 1, y].B +
+                                originalImage[x - 1, y - 1].B + originalImage[x, y - 1].B +
+                                originalImage[x + 1, y + 1].B) / 9);
+
+                }
+                else if (x == 0 && y == height - 1)
+                {
+                    r = (Byte)((originalImage[x - 1, y + 1].R + originalImage[x, y + 1].R +
+                                originalImage[x + 1, y + 1].R +
+                                originalImage[x - 1, y].R + originalImage[x, y].R + originalImage[x + 1, y].R +
+                                originalImage[x - 1, y - 1].R + originalImage[x, y - 1].R +
+                                originalImage[x + 1, y + 1].R) / 9);
+                    g = (Byte)((originalImage[x - 1, y + 1].G + originalImage[x, y + 1].G +
+                                originalImage[x + 1, y + 1].G +
+                                originalImage[x - 1, y].G + originalImage[x, y].G + originalImage[x + 1, y].G +
+                                originalImage[x - 1, y - 1].G + originalImage[x, y - 1].G +
+                                originalImage[x + 1, y + 1].G) / 9);
+                    b = (Byte)((originalImage[x - 1, y + 1].B + originalImage[x, y + 1].B +
+                                originalImage[x + 1, y + 1].B +
+                                originalImage[x - 1, y].B + originalImage[x, y].B + originalImage[x + 1, y].B +
+                                originalImage[x - 1, y - 1].B + originalImage[x, y - 1].B +
+                                originalImage[x + 1, y + 1].B) / 9);
+
+                }
+                else if (y == 0 && x == width - 1)
+                {
+                    r = (Byte)((originalImage[x - 1, y + 1].R + originalImage[x, y + 1].R +
+                                originalImage[x + 1, y + 1].R +
+                                originalImage[x - 1, y].R + originalImage[x, y].R + originalImage[x + 1, y].R +
+                                originalImage[x - 1, y - 1].R + originalImage[x, y - 1].R +
+                                originalImage[x + 1, y + 1].R) / 9);
+                    g = (Byte)((originalImage[x - 1, y + 1].G + originalImage[x, y + 1].G +
+                                originalImage[x + 1, y + 1].G +
+                                originalImage[x - 1, y].G + originalImage[x, y].G + originalImage[x + 1, y].G +
+                                originalImage[x - 1, y - 1].G + originalImage[x, y - 1].G +
+                                originalImage[x + 1, y + 1].G) / 9);
+                    b = (Byte)((originalImage[x - 1, y + 1].B + originalImage[x, y + 1].B +
+                                originalImage[x + 1, y + 1].B +
+                                originalImage[x - 1, y].B + originalImage[x, y].B + originalImage[x + 1, y].B +
+                                originalImage[x - 1, y - 1].B + originalImage[x, y - 1].B +
+                                originalImage[x + 1, y + 1].B) / 9);
+
+                }
+                //borde izq
+                else if (x == 0)
+                {
+                    r = (Byte)((originalImage[x, y + 1].R +
+                                originalImage[x + 1, y + 1].R + originalImage[x, y].R + originalImage[x + 1, y].R + originalImage[x, y - 1].R +
+                                originalImage[x + 1, y + 1].R) / 9);
+                    g = (Byte)((originalImage[x, y + 1].G +
+                                originalImage[x + 1, y + 1].G + originalImage[x, y].G + originalImage[x + 1, y].G + originalImage[x, y - 1].G +
+                                originalImage[x + 1, y + 1].G) / 9);
+                    b = (Byte)((originalImage[x, y + 1].B +
+                                originalImage[x + 1, y + 1].B + originalImage[x, y].B + originalImage[x + 1, y].B + originalImage[x, y - 1].B +
+                                originalImage[x + 1, y + 1].B) / 9);
+                }
+                //borde der
+                else if (x == width - 1)
+                {
+                    r = (Byte)((originalImage[x - 1, y + 1].R + originalImage[x, y + 1].R +
+                                originalImage[x + 1, y + 1].R +
+                                originalImage[x - 1, y].R + originalImage[x, y].R + originalImage[x + 1, y].R +
+                                originalImage[x - 1, y - 1].R + originalImage[x, y - 1].R +
+                                originalImage[x + 1, y + 1].R) / 9);
+                    g = (Byte)((originalImage[x - 1, y + 1].G + originalImage[x, y + 1].G +
+                                originalImage[x + 1, y + 1].G +
+                                originalImage[x - 1, y].G + originalImage[x, y].G + originalImage[x + 1, y].G +
+                                originalImage[x - 1, y - 1].G + originalImage[x, y - 1].G +
+                                originalImage[x + 1, y + 1].G) / 9);
+                    b = (Byte)((originalImage[x - 1, y + 1].B + originalImage[x, y + 1].B +
+                                originalImage[x + 1, y + 1].B +
+                                originalImage[x - 1, y].B + originalImage[x, y].B + originalImage[x + 1, y].B +
+                                originalImage[x - 1, y - 1].B + originalImage[x, y - 1].B +
+                                originalImage[x + 1, y + 1].B) / 9);
+
+                }
+                //borde abajo
+                else if (y == 0)
+                {
+                    r = (Byte)((originalImage[x - 1, y + 1].R + originalImage[x, y + 1].R +
+                                originalImage[x + 1, y + 1].R +
+                                originalImage[x - 1, y].R + originalImage[x, y].R + originalImage[x + 1, y].R +
+                                originalImage[x - 1, y - 1].R + originalImage[x, y - 1].R +
+                                originalImage[x + 1, y + 1].R) / 9);
+                    g = (Byte)((originalImage[x - 1, y + 1].G + originalImage[x, y + 1].G +
+                                originalImage[x + 1, y + 1].G +
+                                originalImage[x - 1, y].G + originalImage[x, y].G + originalImage[x + 1, y].G +
+                                originalImage[x - 1, y - 1].G + originalImage[x, y - 1].G +
+                                originalImage[x + 1, y + 1].G) / 9);
+                    b = (Byte)((originalImage[x - 1, y + 1].B + originalImage[x, y + 1].B +
+                                originalImage[x + 1, y + 1].B +
+                                originalImage[x - 1, y].B + originalImage[x, y].B + originalImage[x + 1, y].B +
+                                originalImage[x - 1, y - 1].B + originalImage[x, y - 1].B +
+                                originalImage[x + 1, y + 1].B) / 9);
+                }
+                //borde arriba
+                else if (y == height - 1)
+                {
+                    r = (Byte)((originalImage[x - 1, y + 1].R + originalImage[x, y + 1].R +
+                                originalImage[x + 1, y + 1].R +
+                                originalImage[x - 1, y].R + originalImage[x, y].R + originalImage[x + 1, y].R +
+                                originalImage[x - 1, y - 1].R + originalImage[x, y - 1].R +
+                                originalImage[x + 1, y + 1].R) / 9);
+                    g = (Byte)((originalImage[x - 1, y + 1].G + originalImage[x, y + 1].G +
+                                originalImage[x + 1, y + 1].G +
+                                originalImage[x - 1, y].G + originalImage[x, y].G + originalImage[x + 1, y].G +
+                                originalImage[x - 1, y - 1].G + originalImage[x, y - 1].G +
+                                originalImage[x + 1, y + 1].G) / 9);
+                    b = (Byte)((originalImage[x - 1, y + 1].B + originalImage[x, y + 1].B +
+                                originalImage[x + 1, y + 1].B +
+                                originalImage[x - 1, y].B + originalImage[x, y].B + originalImage[x + 1, y].B +
+                                originalImage[x - 1, y - 1].B + originalImage[x, y - 1].B +
+                                originalImage[x + 1, y + 1].B) / 9);
+
+                }
+                else
+                {
+                    //normal
+                    r = (Byte)((originalImage[x - 1, y + 1].R + originalImage[x, y + 1].R +
+                                originalImage[x + 1, y + 1].R +
+                                originalImage[x - 1, y].R + originalImage[x, y].R + originalImage[x + 1, y].R +
+                                originalImage[x - 1, y - 1].R + originalImage[x, y - 1].R +
+                                originalImage[x + 1, y + 1].R) / 9);
+                    g = (Byte)((originalImage[x - 1, y + 1].R + originalImage[x, y + 1].R +
+                                originalImage[x + 1, y + 1].R +
+                                originalImage[x - 1, y].R + originalImage[x, y].R + originalImage[x + 1, y].R +
+                                originalImage[x - 1, y - 1].R + originalImage[x, y - 1].R +
+                                originalImage[x + 1, y + 1].R) / 9);
+                    b = (Byte)((originalImage[x - 1, y + 1].R + originalImage[x, y + 1].R +
+                                originalImage[x + 1, y + 1].R +
+                                originalImage[x - 1, y].R + originalImage[x, y].R + originalImage[x + 1, y].R +
+                                originalImage[x - 1, y - 1].R + originalImage[x, y - 1].R +
+                                originalImage[x + 1, y + 1].R) / 9);
+                }
+
+                NewImage[x, y] = new Rgb24(r, g, b);
+            }
+        }
         return NewImage;
     }
 }
