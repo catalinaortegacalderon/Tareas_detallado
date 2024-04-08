@@ -11,7 +11,7 @@ using Photoshop.Effects;
 IPhotoEffect[] availableEffects = new IPhotoEffect[]
 {
  new BlackAndWhiteEffect(), new OscurecerEffect(), new AclararEffect(),
- new ReflejarEffect(), new RotateEffect()
+ new ReflejarEffect(), new RotateEffect(), new Difuminar(), new Bordes()
 };
 string folder = "imgs";
 Controller.Run(folder, availableEffects);

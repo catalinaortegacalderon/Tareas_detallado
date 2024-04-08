@@ -3,9 +3,9 @@ using SixLabors.ImageSharp.PixelFormats;
 
 namespace Photoshop.Effects;
 
-public class BordesEffect:IPhotoEffect
+public class Bordes:IPhotoEffect
 {
-    private readonly string _description = "Muestra bordes de la imagen.";
+    private readonly string _description = "Bordes de la imagen.";
     
     public string Description
     {
@@ -16,38 +16,58 @@ public class BordesEffect:IPhotoEffect
     {
         int width = originalImage.Width;
         int height = originalImage.Height;
-        Image<Rgb24> NewImage = new Image<Rgb24>(width, height); 
-        for (int x = 0; x < width; x++)
+        Image<Rgb24> NewImage = new Image<Rgb24>(width, height);
+        // voy a hacer una imagen con el borde 0
+        // la nueva imagen se basará en la vieja
+        
+        // haciendo la nueva imagen
+        Image<Rgb24> ImagenAuxiliar = new Image<Rgb24>(width +2 , height +2);
+        for (int x1 = 0; x1 < (width + 2); x1++)
         {
-            for (int y = 0; y < height; y++)
+            for (int y1 = 0; y1 < (height + 2); y1++)
             {
-                //normal
-                //borde arriba
-                //borde abajo
-                //borde derecha
-                //borde izq
-                int r = originalImage[x, y].R;
-                int g = originalImage[x, y].G;
-                int b = originalImage[x, y].B;
-                Byte r2 = (Byte)(255);
-                Byte g2 = (Byte)(255);
-                Byte b2 = (Byte)(255);
-                if (r < 235)
+                if (y1 == 0 || x1 == 0 || x1 == width + 1 || y1 == width + 1)
                 {
-                    r2 = (Byte)(r + 20);
+                    ImagenAuxiliar[x1, y1] = new Rgb24(0, 0, 0);
                 }
-                if (g < 235)
+                else
                 {
-                    g2 = (Byte)(g + 20);
+                    ImagenAuxiliar[x1, y1] = new Rgb24(originalImage[x1 - 1, y1 - 1].R,
+                        originalImage[x1 - 1, y1 - 1].G,
+                        originalImage[x1 - 1, y1 - 1].B);
                 }
-                if (b < 235)
-                {
-                    b2 = (Byte)(b + 20);
-                }
-                NewImage[x, y] = new Rgb24(r2,g2,b2);
-            }   
+            }
         }
-
-        return NewImage;
+        // haciendo el efecto
+            
+        for (int x2 = 0; x2 < width; x2++)
+        {
+            for (int y2 = 0; y2 < height; y2++)
+            {
+                Byte r;
+                Byte g;
+                Byte b;
+                //normal
+                int x = x2 + 1;
+                int y = y2 + 1;
+                r = (Byte)( (8 * ImagenAuxiliar[x, y].R) - (ImagenAuxiliar[x - 1, y + 1].R + ImagenAuxiliar[x, y + 1].R +
+                                                     ImagenAuxiliar[x + 1, y + 1].R +
+                                                     ImagenAuxiliar[x - 1, y].R  + ImagenAuxiliar[x + 1, y].R +
+                                                     ImagenAuxiliar[x - 1, y - 1].R + ImagenAuxiliar[x, y - 1].R +
+                                                     ImagenAuxiliar[x + 1, y + 1].R));
+                g = (Byte)((8 * ImagenAuxiliar[x, y].G) - (ImagenAuxiliar[x - 1, y + 1].G + ImagenAuxiliar[x, y + 1].G +
+                                                           ImagenAuxiliar[x + 1, y + 1].G +
+                                                           ImagenAuxiliar[x - 1, y].G  + ImagenAuxiliar[x + 1, y].G +
+                                                           ImagenAuxiliar[x - 1, y - 1].G + ImagenAuxiliar[x, y - 1].G +
+                                                           ImagenAuxiliar[x + 1, y + 1].G));
+                b = (Byte)((8 * ImagenAuxiliar[x, y].B) -(ImagenAuxiliar[x - 1, y + 1].B + ImagenAuxiliar[x, y + 1].B +
+                                                          ImagenAuxiliar[x + 1, y + 1].B +
+                                                          ImagenAuxiliar[x - 1, y].B + ImagenAuxiliar[x + 1, y].B +
+                                                          ImagenAuxiliar[x - 1, y - 1].B + ImagenAuxiliar[x, y - 1].B +
+                                                          ImagenAuxiliar[x + 1, y + 1].B));
+                NewImage[x2, y2] = new Rgb24(r, g, b);
+            }
+        }
+        return ImagenAuxiliar;
     }
-}
+} 
