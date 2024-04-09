@@ -50,24 +50,60 @@ public class Bordes:IPhotoEffect
                 //normal
                 int x = x2 + 1;
                 int y = y2 + 1;
-                r = (Byte)( (8 * ImagenAuxiliar[x, y].R) - (ImagenAuxiliar[x - 1, y + 1].R + ImagenAuxiliar[x, y + 1].R +
-                                                     ImagenAuxiliar[x + 1, y + 1].R +
-                                                     ImagenAuxiliar[x - 1, y].R  + ImagenAuxiliar[x + 1, y].R +
-                                                     ImagenAuxiliar[x - 1, y - 1].R + ImagenAuxiliar[x, y - 1].R +
-                                                     ImagenAuxiliar[x + 1, y + 1].R));
-                g = (Byte)((8 * ImagenAuxiliar[x, y].G) - (ImagenAuxiliar[x - 1, y + 1].G + ImagenAuxiliar[x, y + 1].G +
+                //int r = originalImage[x, y].R;
+                //int g = originalImage[x, y].G;
+                //int b = originalImage[x, y].B;
+                //Byte averageColor = (Byte)((r+g+b) / 3);
+                //hacer min y max
+                int rint;
+                int gint;
+                int bint;
+                rint = ( (8 * ImagenAuxiliar[x, y].R) - (ImagenAuxiliar[x - 1, y + 1].R + ImagenAuxiliar[x, y + 1].R +
+                                                            ImagenAuxiliar[x + 1, y + 1].R +
+                                                            ImagenAuxiliar[x - 1, y].R  + ImagenAuxiliar[x + 1, y].R +
+                                                            ImagenAuxiliar[x - 1, y - 1].R + ImagenAuxiliar[x, y - 1].R +
+                                                            ImagenAuxiliar[x + 1, y + 1].R));
+                gint = ((8 * ImagenAuxiliar[x, y].G) - (ImagenAuxiliar[x - 1, y + 1].G + ImagenAuxiliar[x, y + 1].G +
                                                            ImagenAuxiliar[x + 1, y + 1].G +
                                                            ImagenAuxiliar[x - 1, y].G  + ImagenAuxiliar[x + 1, y].G +
                                                            ImagenAuxiliar[x - 1, y - 1].G + ImagenAuxiliar[x, y - 1].G +
                                                            ImagenAuxiliar[x + 1, y + 1].G));
-                b = (Byte)((8 * ImagenAuxiliar[x, y].B) -(ImagenAuxiliar[x - 1, y + 1].B + ImagenAuxiliar[x, y + 1].B +
+                bint = ((8 * ImagenAuxiliar[x, y].B) -(ImagenAuxiliar[x - 1, y + 1].B + ImagenAuxiliar[x, y + 1].B +
                                                           ImagenAuxiliar[x + 1, y + 1].B +
                                                           ImagenAuxiliar[x - 1, y].B + ImagenAuxiliar[x + 1, y].B +
                                                           ImagenAuxiliar[x - 1, y - 1].B + ImagenAuxiliar[x, y - 1].B +
                                                           ImagenAuxiliar[x + 1, y + 1].B));
+                // otra manera de hacerlo: poner max y min
+                if (rint < 0)
+                {
+                    rint = 0;
+                }
+                if (rint > 255)
+                {
+                    rint = 255;
+                }
+                if (gint < 0)
+                {
+                    gint = 0;
+                }
+                if (gint > 255)
+                {
+                    gint = 255;
+                }
+                if (bint < 0)
+                {
+                    bint = 0;
+                }
+                if (bint > 255)
+                {
+                    bint = 255;
+                }
+                r = (Byte)(rint);
+                g = (Byte)(gint);
+                b = (Byte)(bint);
                 NewImage[x2, y2] = new Rgb24(r, g, b);
             }
         }
-        return ImagenAuxiliar;
+        return NewImage;
     }
 } 
